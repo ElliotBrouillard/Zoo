@@ -73,6 +73,16 @@ class Fenetreanimal(QtWidgets.QDialog, UI_PY.Dialog_animal.Ui_Dialog):
         self.label_erreur_numero_animal_invalide.setText("")
         self.label_erreur_poids_animal.setText("")
 
+    # Méthode pour réinitialiser les contrôles
+    def Reinitialiser_controles(self):
+        """
+        Réinitialiser les lineEdits
+        """
+        self.lineEdit_numero_animal.clear()
+        self.lineEdit_longueur_bec.clear()
+        self.lineEdit_surnom_animal.clear()
+        self.lineEdit_poids_animal.clear()
+
     # Méthode qui permet d'activer et désactiver les contrôles selon le choix
     def Activer_contrôles_animal(self, p_var: int):
         """
@@ -140,10 +150,23 @@ class Fenetreanimal(QtWidgets.QDialog, UI_PY.Dialog_animal.Ui_Dialog):
             MonAnimal.surnom_animal=self.lineEdit_surnom_animal.text()
         # Si tous les attributs sont valides
         if MonAnimal.Numero_animal != "" and MonAnimal.Enclos_animal != "" and MonAnimal.surnom_animal != "" and not Verifie_numero_animal:
+            # Ajouter l'animal dans la liste des animaux
             Classes.Animal.ls_animaux.append(MonAnimal)
             self.Reinitialiser_controles()
         # Sinon si la famille de l'animal est oiseau
         elif self.comboBox_famille_animal.currentText=="Oiseau":
+            MonAnimal.longueur_bec = self.lineEdit_longueur_bec.text()
+            try:
+                if MonAnimal.longueur_bec == 0:
+                    self.label_erreur_longueur_bec.setText("<font color=\"#ff0000\">Entrer un nombre entier supérieur à 18</font>")
+            except:
+                self.label_erreur_longueur_bec.setText("<font color=\"#ff0000\">Entrer un nombre entier>")
+            # Si tous les attribut sont valides
+            if MonAnimal.Numero_animal != "" and MonAnimal.surnom_animal != "" and MonAnimal.Enclos_animal != "" and not Verifie_numero_animal:
+                # Ajouter l'animal à la liste d'animaux
+                Classes.Animal.ls_animaux.append(MonAnimal)
+                self.Reinitialiser_controles()
+
 
 
 
