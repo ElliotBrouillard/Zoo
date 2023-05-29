@@ -98,7 +98,7 @@ class Fenetreenclos(QtWidgets.QDialog, UI_PY.Dialog_enclos.Ui_Dialog):
         # Si le nom, le numéro sont valides et l'enclos existe dans la liste des étudiants
         if enclos._nom_enclos != "" and enclos._numero_enclos != "" and verifier_enclos is True:
             trouve = False
-            for elt in Classes.Enclos.ls_enclos:
+            for elt in Classes.Classe_Enclos.Enclos.ls_enclos:
                 # Chercher dans la liste des enclos un enclos ayant les informations entrées
                 if elt._numero_enclos == self.lineEdit_numero_enclos.text() and elt._nom_enclos == self.lineEdit_nom_enclos.text().capitalize():
                     # Supprimer l'enclos de la liste des enclos
@@ -110,7 +110,7 @@ class Fenetreenclos(QtWidgets.QDialog, UI_PY.Dialog_enclos.Ui_Dialog):
                 self.label_erreur_numero_enclos_existe_pas.setVisible(True)
             else:
                 # Réafficher la liste
-                Classes.Enclos.ls_enclos.clear()
+                Classes.Classe_Enclos.Enclos.ls_enclos.clear()
                 for elt in Classes.Classe_Enclos.Enclos.ls_enclos:
                     Classes.Classe_Enclos.Enclos.ls_enclos.append(elt.__str__())
                 # Réinitialiser les lineEdit et le dateEdit

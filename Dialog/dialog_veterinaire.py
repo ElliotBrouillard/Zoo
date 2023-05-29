@@ -11,6 +11,8 @@ from PyQt5 import QtWidgets
 #     objet.label_erreur_nom_employe.setVisible(False)
 #     objet.label_erreur_prenom_employe.setVisible(False)
 #     objet.label_erreur_date_naiss.setVisible(False)
+
+
 ######################################################
 ###### DÉFINITIONS DE LA CLASSE Fenetrelistview ######
 ######################################################
@@ -23,3 +25,9 @@ class Fenetreveterinaire(QtWidgets.QDialog, UI_PY.Dialog_veterinaire.Ui_Dialog):
         super(Fenetreveterinaire, self).__init__(parent)
         self.setupUi(self)
         self.setWindowTitle("Boîte de dialogue Vétérinaire")
+
+    # Définitions des fonctions
+    def serialiser(self):
+        pass
+
+    def on_pushButton

@@ -62,8 +62,6 @@ class fenetrePrincipale(QtWidgets.QMainWindow, UI_PY.MainWindow_zoo.Ui_MainWindo
         self.setupUi(self)
         # Donner un titre à la fenêtre principale
         self.setWindowTitle("Gestion du zoo")
-        # Cacher tous les labels d'erreur
-        # cacher_labels_erreur(self)
     # Gestionnaire d'événement du bouton Patient
     @pyqtSlot()
     def on_pushButton_enclos_clicked(self):
