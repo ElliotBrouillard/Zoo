@@ -32,21 +32,11 @@ from Dialog.dialog_veterinaire import Fenetreveterinaire
 
 
 
+
+
 #######################################
 ###### DÉFINITIONS DES FONCTIONS ######
 #######################################
-
-
-
-
-
-#     objet.label_erreur_numero_employe__existe.setVisible(False)
-#     objet.label_erreur_numero_employe_invalide.setVisible(False)
-#     objet.label_erreur_numero_employe_existe_pas.setVisible(False)
-#     objet.label_erreur_nom_employe.setVisible(False)
-#     objet.label_erreur_prenom_employe.setVisible(False)
-#     objet.label_erreur_date_naiss.setVisible(False)
-
 
 ########################################################
 ###### DÉFINITIONS DE LA CLASSE fenetrePrincipale ######
