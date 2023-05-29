@@ -7,6 +7,7 @@ import UI_PY.Dialog_animal
 from PyQt5 import QtWidgets
 #import Dialog.dialog_enclos
 #import Classes.Classe_Animal
+import Classes.Classe_Mammifere
 
 
 ######################################################
@@ -21,7 +22,7 @@ def Verifier_numero_animal_existe(p_numero_a):
             return True
         else:
             return False
-
+# Fonction permettant de cacher les labels d'erreur
 def cacher_labels_erreur(objet):
     objet.label_erreur_poids_animal.setVisible(False)
     objet.label_erreur_numero_animal_existe_pas.setVisible(False)
@@ -50,7 +51,7 @@ class Fenetreanimal(QtWidgets.QDialog, UI_PY.Dialog_animal.Ui_Dialog):
 
 
     # # Entrée de donnée
-    #     self.comboBox_enclos_animal.addItems("E1", "E2")
+        self.comboBox_enclos_animal.addItems("E1", "E2", "E3")
     #     self.comboBox_enclos_animal.setItemText(0, "E1")
     #     self.comboBox_enclos_animal.setItemText(1, "E2")
     #     self.comboBox_enclos_animal.setItemText(2, "E3")
@@ -61,16 +62,16 @@ class Fenetreanimal(QtWidgets.QDialog, UI_PY.Dialog_animal.Ui_Dialog):
     #     # Question 3 de boite de dialogue animal
     #     self.comboBox_surnom.setItemtext(0, "Minou")
     #     self.lineEdit_surnom_animal.setText("Minou")
-
+    # Fonction permettant de réinitialiser les labels d'erreur
     def Reinitialiser_label_erreur(self):
         """
         Réinitialiser les labels d'erreur
         """
-        self.label_erreur_longueur_bec.setText()
-        self.label_erreur_numero_animal_existe.setText()
-        self.label_erreur_numero_animal_existe_pas.setText()
-        self.label_erreur_numero_animal_invalide.setText()
-        self.label_erreur_poids_animal.setText()
+        self.label_erreur_longueur_bec.setText("")
+        self.label_erreur_numero_animal_existe.setText("")
+        self.label_erreur_numero_animal_existe_pas.setText("")
+        self.label_erreur_numero_animal_invalide.setText("")
+        self.label_erreur_poids_animal.setText("")
 
     # Méthode qui permet d'activer et désactiver les contrôles selon le choix
     def Activer_contrôles_animal(self, p_var: int):
@@ -79,13 +80,15 @@ class Fenetreanimal(QtWidgets.QDialog, UI_PY.Dialog_animal.Ui_Dialog):
         mammifère, oiseau ou reptile
         """
         # Activer/désactiver les contrôles
-        self.label_venimeux.setDisabled(p_var)
+        self.label_venimeux.setDisabled(p_var=3)
         self.comboBox_venimeux.setDisabled(p_var)
-        self.label_couleur_poil.setDisabled(not p_var)
-        self.comboBox_couleur_poil.setDisabled(not p_var)
-        self.label_longueur_bec.setDisabled(p_var)
+        self.label_couleur_poil.setDisabled(p_var=1)
+        self.comboBox_couleur_poil.setDisabled(p_var=1)
+        self.label_longueur_bec.setDisabled(p_var=2)
+        self.lineEdit_longueur_bec.setDisabled(p_var=2)
 
 
+    # Méthode permettant de choisir la famille de l'animal
     def ChoisirFamilleAnimal(self):
         """
         Permet de tester le choix de l'utilisateur(Mammifère, oiseau ou reptile)
@@ -138,6 +141,10 @@ class Fenetreanimal(QtWidgets.QDialog, UI_PY.Dialog_animal.Ui_Dialog):
         # Si tous les attributs sont valides
         if MonAnimal.Numero_animal != "" and MonAnimal.Enclos_animal != "" and MonAnimal:
             Classes.Animal.ls_animaux.append(MonAnimal)
+            self.Reinitialiser_controles()
+        # Sinon si la famille de l'animal est oiseau
+        elif self.comboBox_famille_animal.currentText=="Oiseau":
+
 
 
 
