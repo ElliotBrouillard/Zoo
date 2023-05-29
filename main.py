@@ -30,9 +30,23 @@ from Dialog.dialog_recherche import Fenetrerecherche
 from Dialog.dialog_veterinaire import Fenetreveterinaire
 
 
+
+
 #######################################
 ###### DÉFINITIONS DES FONCTIONS ######
 #######################################
+
+
+
+
+
+#     objet.label_erreur_numero_employe__existe.setVisible(False)
+#     objet.label_erreur_numero_employe_invalide.setVisible(False)
+#     objet.label_erreur_numero_employe_existe_pas.setVisible(False)
+#     objet.label_erreur_nom_employe.setVisible(False)
+#     objet.label_erreur_prenom_employe.setVisible(False)
+#     objet.label_erreur_date_naiss.setVisible(False)
+
 
 ########################################################
 ###### DÉFINITIONS DE LA CLASSE fenetrePrincipale ######
@@ -58,6 +72,8 @@ class fenetrePrincipale(QtWidgets.QMainWindow, UI_PY.MainWindow_zoo.Ui_MainWindo
         self.setupUi(self)
         # Donner un titre à la fenêtre principale
         self.setWindowTitle("Gestion du zoo")
+        # Cacher tous les labels d'erreur
+        # cacher_labels_erreur(self)
     # Gestionnaire d'événement du bouton Patient
     @pyqtSlot()
     def on_pushButton_enclos_clicked(self):
@@ -67,13 +83,7 @@ class fenetrePrincipale(QtWidgets.QMainWindow, UI_PY.MainWindow_zoo.Ui_MainWindo
         dialog.show()
         dialog.exec_()
 
-    # Gestionnaire d'événement du bouton ajouter_enclos
-    @pyqtSlot()
-    def on_pushButton_ajouter_enclos_clicked(self):
-        """
-        Gestionnaire d'événement du bouton Ajouter enclos
-        """
-        # Cacher les
+
     # gastionnaire d'événement du bouton Médicament
     @pyqtSlot()
     def on_pushButton_animal_clicked(self):
