@@ -41,7 +41,10 @@ class Fenetreanimal(QtWidgets.QDialog, UI_PY.Dialog_animal.Ui_Dialog):
         self.setupUi(self)
         self.setWindowTitle("Boîte de dialogue animal")
         # Désactiver les labels, lineEdits et comboBox de Oiseau et Reptile
-        self.label_
+        self.label_longueur_bec.setDisabled(True)
+        self.lineEdit_longueur_bec.setDisabled(True)
+        self.label_venimeux.setDisabled(True)
+        self.comboBox_venimeux.setDisabled(True)
         # Si une famille est sélectionnée, exécuter la méthode ChoisirFamilleAnimal()
         self.comboBox_famille_animal.currentIndexChanged.connect(self.ChoisirFamilleAnimal)
 
@@ -63,7 +66,11 @@ class Fenetreanimal(QtWidgets.QDialog, UI_PY.Dialog_animal.Ui_Dialog):
         """
         Réinitialiser les labels d'erreur
         """
-        self.label_erreur_
+        self.label_erreur_longueur_bec.setText()
+        self.label_erreur_numero_animal_existe.setText()
+        self.label_erreur_numero_animal_existe_pas.setText()
+        self.label_erreur_numero_animal_invalide.setText()
+        self.label_erreur_poids_animal.setText()
 
     # Méthode qui permet d'activer et désactiver les contrôles selon le choix
     def Activer_contrôles_animal(self, p_var: int):
@@ -74,6 +81,10 @@ class Fenetreanimal(QtWidgets.QDialog, UI_PY.Dialog_animal.Ui_Dialog):
         # Activer/désactiver les contrôles
         self.label_venimeux.setDisabled(p_var)
         self.comboBox_venimeux.setDisabled(p_var)
+        self.label_couleur_poil.setDisabled(not p_var)
+        self.comboBox_couleur_poil.setDisabled(not p_var)
+        self.label_longueur_bec.setDisabled(p_var)
+
 
     def ChoisirFamilleAnimal(self):
         """
@@ -102,7 +113,7 @@ class Fenetreanimal(QtWidgets.QDialog, UI_PY.Dialog_animal.Ui_Dialog):
         animal.Surnom=self.lineEdit_surnom_animal.text().capitalize()
 
         # isHidden
-        # Validation
+        # Instancier un mammifère, un oiseau ou un reptile
         if self.comboBox_famille_animal.currentText()=="Mammifère":
             MonAnimal= Mammifere()
 
@@ -111,7 +122,7 @@ class Fenetreanimal(QtWidgets.QDialog, UI_PY.Dialog_animal.Ui_Dialog):
 
         else:
             MonAnimal = Reptile()
-
+        # Validation
         MonAnimal.Famille_Animal = self.comboBox_famille_animal.currentText()
         MonAnimal.Numero_animal = self.lineEdit_numero_animal.Text()
         if MonAnimal.Numero_animal == "":
@@ -124,8 +135,9 @@ class Fenetreanimal(QtWidgets.QDialog, UI_PY.Dialog_animal.Ui_Dialog):
         MonAnimal.Enclos_animal=self.comboBox_enclos_animal.currentText()
         try:
             MonAnimal.surnom_animal=self.lineEdit_surnom_animal.text()
-
-        if MonAnimal.Numero_animal != "" and MonAnimal.Enclos_animal != "" and MonAnimal
+        # Si tous les attributs sont valides
+        if MonAnimal.Numero_animal != "" and MonAnimal.Enclos_animal != "" and MonAnimal:
+            Classes.Animal.ls_animaux.append(MonAnimal)
 
 
 
