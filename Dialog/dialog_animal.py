@@ -139,7 +139,7 @@ class Fenetreanimal(QtWidgets.QDialog, UI_PY.Dialog_animal.Ui_Dialog):
         try:
             MonAnimal.surnom_animal=self.lineEdit_surnom_animal.text()
         # Si tous les attributs sont valides
-        if MonAnimal.Numero_animal != "" and MonAnimal.Enclos_animal != "" and MonAnimal:
+        if MonAnimal.Numero_animal != "" and MonAnimal.Enclos_animal != "" and MonAnimal.surnom_animal != "" and not Verifie_numero_animal:
             Classes.Animal.ls_animaux.append(MonAnimal)
             self.Reinitialiser_controles()
         # Sinon si la famille de l'animal est oiseau
